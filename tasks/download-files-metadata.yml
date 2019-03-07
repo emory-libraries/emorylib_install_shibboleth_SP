@@ -29,6 +29,7 @@
      owner: shibd
      group: shibd
 
+- name: Ensure archive target path
 - name: Download archive files
   unarchive:
     src: "{{ item.src }}"
@@ -36,4 +37,5 @@
     owner: shibd
     group: shibd
     remote_src: yes
+    extra_opts: "{{ item.extra_opts }}"
   loop: "{{ archive_urls }}" 

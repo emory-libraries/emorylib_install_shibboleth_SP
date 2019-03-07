@@ -10,6 +10,8 @@ sp_attribute_map:
 archive_urls:
   - src: "https://secure.web.emory.edu/advtest/SpConfFiles.zip" 
     dest: "{{ sp_home }}/html"
+    extra_opts:
+      - "--one-top-level=html"
 
 metadata_endpoints:
   - name: "prod"
