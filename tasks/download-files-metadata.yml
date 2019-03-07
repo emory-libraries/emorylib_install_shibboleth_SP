@@ -29,6 +29,15 @@
      owner: shibd
      group: shibd
 
+- name: Ensure archive folder exists
+  file:
+    path: "{{ item.dest }}"
+    state: directory
+    owner: shibd
+    group: shibd
+  loop: "{{ archive_urls }}"
+  when: "{{ item.create_dir }}"
+
 - name: Download archive files
   unarchive:
     src: "{{ item.src }}"
