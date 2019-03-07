@@ -46,4 +46,12 @@
     group: shibd
     remote_src: yes
     extra_opts: "{{ item.extra_opts }}"
-  loop: "{{ archive_urls }}" 
+  ignore_errors: yes                    #-j breaks the module for unzip
+  loop: "{{ archive_urls }}"
+
+- name: Set permissions on directory
+  file:
+    path: "{{ sp_home }}"
+    owner: shibd
+    group: shibd
+    recurse: yes
