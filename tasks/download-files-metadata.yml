@@ -45,4 +45,5 @@
     owner: shibd
     group: shibd
     remote_src: yes
+    extra_opts: "{{ item.extra_opts }}"
   loop: "{{ archive_urls }}" 
