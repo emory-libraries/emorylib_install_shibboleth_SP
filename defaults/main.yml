@@ -2,9 +2,7 @@ state: "present"
 sp_home: "/etc/shibboleth"
 sp_entity_id: "https://{{ ansible_hostname }}"
 
-idp_attribute_map:
-  name: "emory"
-  url: "https://login.emory.edu/client-config/attribute-map.xml"
+idp_attribute_map_src: "https://login.emory.edu/client-config/attribute-map.xml"
 sp_attribute_map:
   name: "{{ ansible_hostname }}"
   url: 

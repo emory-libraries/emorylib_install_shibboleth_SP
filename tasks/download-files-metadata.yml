@@ -23,7 +23,7 @@
 
 - name: Put in place Attribute Map
   get_url:
-     url:
+     url: "{{ idp_attribute_map_src }}"
      dest: "{{ sp_home }}/attribute-map.yml"
      mode: 0755
      owner: shibd
