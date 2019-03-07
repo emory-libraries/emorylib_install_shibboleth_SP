@@ -8,7 +8,7 @@
     name: security_shibboleth
     description: "Shibboleth ({{ ansible_distribution }})"
     enabled: no
-    base_url: "{{ repo_base_url }}"
+    baseurl: "{{ repo_base_url }}"
     gpgcheck: yes
     gpgkey: "{{ repo_base_url }}/repodata/repomd.xml.key"
 
