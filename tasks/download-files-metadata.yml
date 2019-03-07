@@ -36,7 +36,7 @@
     owner: shibd
     group: shibd
   loop: "{{ archive_urls }}"
-  when: "{{ item.create_dir }}"
+  when: item.create_dir 
 
 - name: Download archive files
   unarchive:
@@ -45,5 +45,4 @@
     owner: shibd
     group: shibd
     remote_src: yes
-    extra_opts: "{{ item.extra_opts }}"
   loop: "{{ archive_urls }}" 
