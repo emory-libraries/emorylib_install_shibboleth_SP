@@ -34,6 +34,7 @@
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"
     extra_opts: "{{ item.extra_opts }}"
+    remote_src: yes
   ignore_errors: yes                    #-j breaks the module for unzip
   loop: "{{ archive_urls }}"
 
