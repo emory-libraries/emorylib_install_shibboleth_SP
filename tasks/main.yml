@@ -15,10 +15,10 @@
 
 - include_tasks:
     file: delete-shibboleth.yml
-      apply:
-        tags:
-          - delete-shibb
-          - never
+    apply:
+      tags:
+        - delete-shibb
+        - never
   tags:
     - delete-shibb
     - never
