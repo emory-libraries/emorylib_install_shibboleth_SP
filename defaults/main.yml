@@ -7,7 +7,7 @@ idp_attribute_map_src: "https://login.emory.edu/client-config/attribute-map.xml"
 
 archive_urls:
   - src: "https://secure.web.emory.edu/advtest/SpConfFiles.zip" 
-    dest: "{{ sp_home }}/html"
+    dest: "{{ sp_home }}/html/"
     extra_opts:
       - "-j"
 
