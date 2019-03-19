@@ -12,3 +12,13 @@
 
 - include_tasks: metadata-download.yml
   when: metadata_download.download 
+
+- include_tasks:
+    file: delete-shibboleth.yml
+      apply:
+        tags:
+          - delete-shibb
+          - never
+  tags:
+    - delete-shibb
+    - never
