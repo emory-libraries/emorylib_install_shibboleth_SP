@@ -11,8 +11,7 @@
     path: "{{ metadata_download_result.dest }}"
     block: "{{ lookup('template', 'additional_assertion_bindings.j2') }}"
     insertbefore: '</md:SPSSODescriptor>'
-    marker_begin: '<!--'
-    marker_end: ' -->'
+    marker: '<!-- {mark} ANSIBLE MANAGED BLOCK -->'
     backup: yes
 
 - name: Add ansible managed message to file
