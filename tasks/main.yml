@@ -10,8 +10,21 @@
 
 - include_tasks: enable-start-shibb.yml
 
-- include_tasks: metadata-download.yml
+- include_tasks: 
+    file: metadata-download.yml
+    apply: 
+      tags: metadata-download
+  tags: metadata-download
   when: metadata_download.download 
+
+- include_tasks:
+    file: add-additional-endpoints-to-metadata.yml
+    apply:
+      tags: add-endpoints
+  tags: add-endpoints
+  when: 
+    - metadata_download_result exists and is success
+    - additional_assertion_bindings exists
 
 - include_tasks:
     file: delete-shibboleth.yml
