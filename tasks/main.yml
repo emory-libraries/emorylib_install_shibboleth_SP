@@ -21,6 +21,7 @@
     file: add-additional-endpoints-to-metadata.yml
     apply:
       tags: add-endpoints
+      delegate_to: localhost
   tags: add-endpoints
   when: 
     - metadata_download_result | d(False) is success
