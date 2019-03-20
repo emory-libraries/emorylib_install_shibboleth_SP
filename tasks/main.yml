@@ -23,8 +23,8 @@
       tags: add-endpoints
   tags: add-endpoints
   when: 
-    - metadata_download_result is defined and is success
-    - additional_assertion_bindings is defined
+    - metadata_download_result | d(False) is success
+    - additional_assertion_bindings | d(False)
 
 - include_tasks:
     file: delete-shibboleth.yml
