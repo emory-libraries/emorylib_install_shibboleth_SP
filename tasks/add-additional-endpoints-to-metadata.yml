@@ -1,9 +1,18 @@
 ---
+#- name: Add additonal endpoints to metadata and backup file
+#  lineinfile:
+#    path: "{{ metadata_download_result.dest }}"
+#    line: "{{ lookup('template', 'additional_assertion_bindings.j2') }}"
+#    insertbefore: '</md:SPSSODescriptor>'
+#    backup: yes
+
 - name: Add additonal endpoints to metadata and backup file
-  lineinfile:
+  blockinfile:
     path: "{{ metadata_download_result.dest }}"
-    line: "{{ lookup('template', 'additional_assertion_bindings.j2') }}"
+    block: "{{ lookup('template', 'additional_assertion_bindings.j2') }}"
     insertbefore: '</md:SPSSODescriptor>'
+    marker_begin: '<!--'
+    marker_end: ' -->'
     backup: yes
 
 - name: Add ansible managed message to file
