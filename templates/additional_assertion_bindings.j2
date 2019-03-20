@@ -1,12 +1,14 @@
+{% for fqdn in additional_assertion_bindings %}
 {% set counter = {
     'artifact_counter': 2,
-    'assertion_counter': 5,
+	'assertion_counter': 5,
 } %}
+
 {% macro increment(dct, key, inc=1)%}
     {% if dct.update({key: dct[key] + inc}) %} {% endif %}
 {% endmacro %}
-{% for fqdn in additional_assertion_bindings %}
-    <md:ArtifactResolutionService Binding="urn:oasis:names:tc:SAML:2.0:bindings:SOAP" Location="https://fqdn/Shibboleth.sso/Artifact/SOAP" index="artifact_counter"/>{% increment(counter, 'artifact_counter' %}
+    <md:ArtifactResolutionService Binding="urn:oasis:names:tc:SAML:2.0:bindings:SOAP" Location="https://fqdn/Shibboleth.sso/Artifact/SOAP" index="artifact_counter"/>
+	{% increment(counter, 'artifact_counter' %}
     <md:SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:SOAP" Location="https://fqdn/Shibboleth.sso/SLO/SOAP"/>
     <md:SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://fqdn/Shibboleth.sso/SLO/Redirect"/>
     <md:SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="https://fqdn/Shibboleth.sso/SLO/POST"/>
