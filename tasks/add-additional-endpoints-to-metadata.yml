@@ -13,13 +13,13 @@
 
 - name: Create artifact starting point
   set_fact:
-    artifact_resolution_service: "{{ item.count | int + 1  }}"
+    artifact_resolution_service: "{{ item.count }}"
   loop: "{{ metadata_counts.results }}"
   when: item._ansible_item_label is search('ArtifactResolutionService')
 
 - name: Create assertion starting point
   set_fact:
-    assertion_consumer_service: "{{ item.count | int + 1  }}"
+    assertion_consumer_service: "{{ item.count }}"
   loop: "{{ metadata_counts.results }}"
   when: item._ansible_item_label is search('AssertionConsumerService')
 
