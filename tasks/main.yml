@@ -39,7 +39,7 @@
       delegate_to: localhost
   tags: add-endpoints
   when: 
-    - metadata_download_result | d(False) is success
+    - metadata_download_result | d(False) and is success
     - additional_assertion_bindings | d(False)
 
 - include_tasks:
