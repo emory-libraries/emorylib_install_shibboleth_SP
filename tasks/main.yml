@@ -40,11 +40,11 @@
   tags: install-shibb
 
 - include_tasks: 
-    file: metadata-download.yml
+    file: get-metadata.yml
     apply: 
-      tags: metadata-download
-  tags: metadata-download
-  when: metadata_download.download 
+      tags: get-metadata
+  tags: get-metadata
+  when: get_metadata.download 
 
 - include_tasks:
     file: add-additional-endpoints-to-metadata.yml
@@ -53,7 +53,7 @@
       delegate_to: localhost
   tags: add-endpoints
   when: 
-    - metadata_download_result | d(False) and success
+    - get_metadata_result | d(False) and success
     - additional_assertion_bindings | d(False)
 
 - name: Update to latest shibboleth SP
