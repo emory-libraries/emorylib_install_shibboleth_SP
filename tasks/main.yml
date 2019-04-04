@@ -3,27 +3,41 @@
     file: install-prereqs.yml
     apply:
       tags:
-        - install-shibb
+        - install-prereqs
   tags:
-    - install-shibb
+    - install-prereqs
   when: not skip_prereqs | d(False)
 
 - include_tasks: 
     file: add-repo-install-shibb.yml
     apply:
-      tags:
-        - install-shibb
-  tags:
-    - install-shibb
+      tags: install-shibb
+  tags: install-shibb
 
-- include_tasks: download-files-metadata.yml
+- include_tasks:
+    file: download-files-metadata.yml
+    apply:
+      tags: install-shibb
+  tags: install-shibb
 
-- include_tasks: setup-ssl-files.yml
+- include_tasks: 
+    file: setup-ssl-files.yml
+    apply:
+      tags: install-shibb
+  tags: install-shibb
   when: sp_ssl_files is defined
 
-- include_tasks: check-if-passenger-enabled.yml
+- include_tasks: 
+    file: check-if-passenger-enabled.yml
+    apply:
+      tags: install-shibb
+  tags: install-shibb
 
-- include_tasks: enable-start-shibb.yml
+- include_tasks: 
+    file: enable-start-shibb.yml
+    apply:
+      tags: install-shibb
+  tags: install-shibb
 
 - include_tasks: 
     file: metadata-download.yml
@@ -39,8 +53,16 @@
       delegate_to: localhost
   tags: add-endpoints
   when: 
-    - metadata_download_result | d(False) and is success
+    - metadata_download_result | d(False) and success
     - additional_assertion_bindings | d(False)
+
+- name: Update to latest shibboleth SP
+  include_tasks:
+    file: add-repo-install-shibb.yml
+    apply:
+      vars:
+        state: latest      
+  tags: update-shibb
 
 - include_tasks:
     file: delete-shibboleth.yml
