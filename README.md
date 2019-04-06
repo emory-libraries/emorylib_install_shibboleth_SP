@@ -10,8 +10,8 @@ Required Role Variables
 * `sp_home` - The directory shibboleth is installed to
 * `idp_attribute_map_src` - Source for the IDP's attribute map
 * `idp_environments` - List of IDP environments
-    `- name` - Name of environment, will be used by another variable called `idp_name`
-    `url`  - URL of the IDP
+	`- name` - Name of environment, will be used by another variable called `idp_name`
+	`url`  - URL of the IDP
 
 * `support_contact` - Shibboleth xml file showing where to get support from
 * `remote__user` - Shibboleth xml file REMOTE_USER
