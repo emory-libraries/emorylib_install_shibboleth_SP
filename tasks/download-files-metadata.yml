@@ -46,7 +46,9 @@
     dest: "{{ item.dest }}"
     extra_opts: "{{ item.extra_opts }}"
     remote_src: yes
-  ignore_errors: yes                    #-j breaks the module for unzip
+#  ignore_errors: yes                    #-j breaks the module for unzip
+  register: archive_result
+  failed_when: "'FAILED' in archive_result.msg" 
   loop: "{{ archive_urls }}"
 
 - name: Set permissions on directory
